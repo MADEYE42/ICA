@@ -197,7 +197,3 @@ This project is provided as-is for educational and research purposes.
 - For single mono audio, synthetic mixtures are created for analysis
 - Image separation quality depends on mixing matrix properties
 - PCA components are ordered by variance, ICA by independence
-
----
-
-**Made with ❤️ for signal and image processing enthusiasts**
