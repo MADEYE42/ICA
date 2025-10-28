@@ -34,7 +34,7 @@ st.set_page_config(
     page_title="ICA vs PCA Analysis",
     page_icon="🎵",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # Enhanced Custom CSS with color theme
@@ -52,10 +52,8 @@ st.markdown("""
         --text-dark: #2c3e50;
     }
     
-    /* Hide default streamlit elements */
-    #MainMenu {visibility: hidden;}
+    /* Hide default streamlit elements - partially hidden */
     footer {visibility: hidden;}
-    header {visibility: hidden;}
     
     /* Main container styling */
     .main {
@@ -526,6 +524,54 @@ def process_image_ica_pca(X, img_size=(256, 256), n_components=3):
 # ================== STREAMLIT UI ==================
 
 def main():
+    # Sidebar with deployment and help info
+    with st.sidebar:
+        st.markdown("### 📋 Information")
+        
+        with st.expander("🚀 Deployment Options", expanded=False):
+            st.markdown("""
+            **Deploy to Streamlit Cloud:**
+            1. Push your repo to GitHub
+            2. Go to [share.streamlit.io](https://share.streamlit.io)
+            3. Sign in with GitHub
+            4. Click "New app" and select your repository
+            5. Your app will be live at: `https://[username]-[repo]-[branch].streamlit.app`
+            
+            **Deploy Locally:**
+            ```bash
+            streamlit run main.py
+            ```
+            """)
+        
+        with st.expander("❓ How to Use", expanded=False):
+            st.markdown("""
+            **Audio Analysis:**
+            - Upload MP3 or WAV file
+            - Adjust components (2-4)
+            - View ICA and PCA results
+            - Download separated audio
+            
+            **Image Analysis:**
+            - Upload exactly 3 images
+            - Choose image size (128-512px)
+            - Compare separation results
+            - Download separated images
+            """)
+        
+        with st.expander("ℹ️ About", expanded=False):
+            st.markdown("""
+            **ICA vs PCA Analysis Tool**
+            
+            This application demonstrates blind source separation using:
+            - **ICA**: Independent Component Analysis
+            - **PCA**: Principal Component Analysis
+            
+            Works with both audio and image data.
+            """)
+        
+        st.markdown("---")
+        st.markdown("Made with ❤️ using Streamlit")
+    
     # Hero Header
     st.markdown("""
     <div class="hero-header">
